@@ -14,10 +14,10 @@ function App(props) {
 				<Navbar />
 				<div className="app-wrapper-content">
 					<Routes>
-						<Route path='/' element={<Profile store={props.store} />} />
-						<Route path='/profile' element={<Profile store={props.store} />} />
-						<Route path='/dialogs' element={<DialogsContainer store={ props.store } />} >
-							<Route path=':id' element={<DialogsContainer store={props.store} />} />
+						<Route path='/' element={<Profile />} />
+						<Route path='/profile' element={<Profile />} />
+						<Route path='/dialogs' element={<DialogsContainer />} >
+							<Route path=':id' element={<DialogsContainer />} />
 						</Route>
 					</Routes>
 				</div>
