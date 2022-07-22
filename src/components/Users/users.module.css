@@ -3,3 +3,16 @@
 	height: 130px;
 	border-radius: 50%;
 }
+
+.selectedPage {
+	font-weight: 700;
+}
+
+.pagination {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	font-size: 10px;
+	cursor: pointer;
+}
