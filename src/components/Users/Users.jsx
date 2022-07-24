@@ -9,6 +9,7 @@ export const Users = (props) => {
 	for (let i = 1; i <= 9; i++) {
 		pages.push(i);
 	}
+	// console.log(props);
 	return (
 		<div>
 			<div className={styles.pagination}>
