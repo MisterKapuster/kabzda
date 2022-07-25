@@ -1,3 +1,25 @@
 .descriptionBlock {
 	padding: 10px;
+	display: flex;
+	gap: 10px;
+}
+
+.bgPhoto img {
+	width: 100%;
+	height: 300px;
+}
+
+.avaBlock {
+	flex: 0 0 30%;
+}
+
+.avaBlock img {
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.nameBlock {
+	font-size: 30px;
+	font-weight: 700;
 }
