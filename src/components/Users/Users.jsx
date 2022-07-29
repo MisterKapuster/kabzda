@@ -30,20 +30,23 @@ export const Users = (props) => {
 							{
 								u.followed
 									? <button onClick={() => {
-										
-										props.unfollow(u.id)
-
+										axios
+											.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, { withCredentials: true, headers: { "API-KEY": "89119e77-0a67-462d-a946-92675e4a478c"} })
+											.then(response => {
+												if (response.data.resultCode === 0) {
+													// console.log(123);
+													props.unfollow(u.id)
+												}
+											});
 									}}>Unfollow</button>
 									: <button onClick={() => {
-										
 										axios
-											.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {withCredentials: true})
+											.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, { withCredentials: true, headers: { "API-KEY": "89119e77-0a67-462d-a946-92675e4a478c" } })
 											.then(response => {
-												if (response.data.codeResult == 0) {
+												if (response.data.resultCode === 0) {
 													props.follow(u.id)
 												}
 											});
-										
 									}}>Follow</button>
 							}
 						</div>
