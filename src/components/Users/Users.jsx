@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './users.module.css';
 import userPhoto from '../../assets/images/user.jfif';
+import * as axios from 'axios';
 
 export const Users = (props) => {
 	let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -10,7 +11,6 @@ export const Users = (props) => {
 	for (let i = 1; i <= 9; i++) {
 		pages.push(i);
 	}
-	// console.log(props);
 	return (
 		<div>
 			<div className={styles.pagination}>
@@ -29,8 +29,22 @@ export const Users = (props) => {
 						<div>
 							{
 								u.followed
-									? <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
-									: <button onClick={() => { props.follow(u.id) }}>Follow</button>
+									? <button onClick={() => {
+										
+										props.unfollow(u.id)
+
+									}}>Unfollow</button>
+									: <button onClick={() => {
+										
+										axios
+											.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {withCredentials: true})
+											.then(response => {
+												if (response.data.codeResult == 0) {
+													props.follow(u.id)
+												}
+											});
+										
+									}}>Follow</button>
 							}
 						</div>
 					</span>
