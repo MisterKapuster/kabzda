@@ -29,14 +29,18 @@ export const Users = (props) => {
 						<div>
 							{
 								u.followed
-									? <button onClick={() => {
+									? <button disabled={ props.followingInProgress.some(id => id === u.id) } onClick={() => {
+										props.toggleFollowingProgress(true, u.id);
 										usersAPI.unfollow(u.id).then(data => {
 											if (data.resultCode === 0) { props.unfollow(u.id) }
+											props.toggleFollowingProgress(false, u.id);
 										});
 									}}>Unfollow</button>
-									: <button onClick={() => {
+									: <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+										props.toggleFollowingProgress(true, u.id);
 										usersAPI.follow(u.id).then(data => {
 											if (data.resultCode === 0) { props.follow(u.id) }
+											props.toggleFollowingProgress(false, u.id);
 										});
 									}}>Follow</button>
 							}
